@@ -1,5 +1,6 @@
 from collections.abc import Callable
 from functools import wraps
+from typing import Any
 
 
 def surprise_decorator(_function: Callable) -> Callable:
@@ -8,7 +9,7 @@ def surprise_decorator(_function: Callable) -> Callable:
     :return: The wrapper.
     """
     @wraps(_function)
-    def wrapper(*_args, **_kwargs) -> None:
+    def wrapper(*_args: Any, **_kwargs: Any) -> None:
         """Prints surprise."""
         print("Surprise!")
     return wrapper
