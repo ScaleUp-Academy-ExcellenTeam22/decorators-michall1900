@@ -53,9 +53,9 @@ def type_check(correct_type: Type[object]) -> Callable[Callable[Any, Any], Calla
 
 
 @type_check(float)
-def times2(num: float) -> float:
+def times2(number: float) -> float:
     """Returns number * 2."""
-    return num*2
+    return number * 2
 
 
 def main_type_check() -> None:
