@@ -17,7 +17,7 @@ def surprise_decorator(_function: Callable) -> Callable:
 @surprise_decorator
 def times2(number: float) -> float:
     """Returns number * 2."""
-    return number*2
+    return number * 2
 
 
 def main_surprise() -> None:
