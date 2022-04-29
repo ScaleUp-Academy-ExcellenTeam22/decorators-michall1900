@@ -18,7 +18,9 @@ def is_prime(num: int) -> bool:
 
 
 class PrimeAndPow:
-    """ A PrimeAndPow class for example.
+
+    """
+    A PrimeAndPow class for example.
 
     :ivar number: An integer number.
 
@@ -47,11 +49,11 @@ class PrimeAndPow:
         """Setter for number to show what is it setter decorator."""
         print("Inside setter, checking if the value is legal.")
         try:
-            if not isinstance(number, int) or not is_prime(number):
-                number = 2
-                raise ValueError("You should enter only a prime number. Set number as 2.")
-        except ValueError as error:
-            print(error)
+            if not is_prime(number):
+                raise TypeError("You should enter only a prime number.")
+        except (ValueError, TypeError) as error:
+            print(f"{error}. Set number as 2.")
+            number = 2
         finally:
             self.__prime = number
 
@@ -74,8 +76,8 @@ def main_three_built_in_decorators() -> None:
     a = PrimeAndPow(3.7)
     print(f"PrimeAndPow object str: {a}.")
     print("-" * 80 + "\n")
-    print("Trying to change PrimeAndPow object value to 5.")
-    a.prime = 5
+    print("Trying to change PrimeAndPow object value to 6.")
+    a.prime = 6
     print(f"PrimeAndPow object str: {a}.")
     print("-" * 80 + "\n")
     print(f"a.number = {a.prime}.")
