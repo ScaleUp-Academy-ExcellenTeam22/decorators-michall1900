@@ -4,6 +4,7 @@ from typing import Any, Type
 
 
 class InvalidTypeError(Exception):
+    
     """
     A InvalidTypeError class, inherits from Exception.
     A custom exception that receives correct type and an object and print what the type should be.
