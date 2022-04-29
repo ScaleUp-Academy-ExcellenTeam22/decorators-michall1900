@@ -4,7 +4,8 @@ from typing import Any
 
 
 def surprise_decorator(_function: Callable) -> Callable:
-    """Receives function and arguments and print surprise instead of the functionality of the function.
+    """
+    Receives function and arguments and print surprise instead of the functionality of the function.
     :param _function: Any kind of function.
     :return: The wrapper.
     """
