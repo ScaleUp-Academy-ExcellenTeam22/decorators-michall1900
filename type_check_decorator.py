@@ -4,7 +4,8 @@ from typing import Any, Type
 
 
 class InvalidTypeError(Exception):
-    """A InvalidTypeError class, inherits from Exception.
+    """
+    A InvalidTypeError class, inherits from Exception.
     A custom exception that receives correct type and an object and print what the type should be.
     :ivar correct_type : The type that should be received.
     :ivar receive_arg : An argument that have been received.
@@ -22,15 +23,15 @@ class InvalidTypeError(Exception):
 
 
 def type_check(correct_type: Type[object]) -> Callable[Callable[Any, Any], Callable[Any, Any]]:
-    """Returns decorator that checks if the given type is like the function's argument type.
+    """
+    Returns decorator that checks if the given type is like the function's argument type.
 
     :param correct_type: The type that should send to function.
     :return: Decorator that will check if the type like wanted and will raise an error if it isn't.
     """
     @wraps(correct_type)
     def type_check_decorator(function: Callable[correct_type, Any]) -> Callable[correct_type, Any]:
-        """Receives functions and check if the given argument's type (to function) as wanted.
-
+        """
         Checking if a function that should receive one argument will receive the correct type of argument
         If the argument type isn't as wanted, InvalidTypeError will raise.
         :param function: Function that receive one argument.
@@ -38,7 +39,8 @@ def type_check(correct_type: Type[object]) -> Callable[Callable[Any, Any], Calla
         """
         @wraps(function)
         def wrapper(argument: type(correct_type)) -> Any:
-            """Checks if the receive type is as wanted. If it is, return what function return. Else, raise
+            """
+            Checks if the receive type is as wanted. If it is, return what function return. Else, raise
             InvalidTypeError.
 
             :param argument: An argument for function.
