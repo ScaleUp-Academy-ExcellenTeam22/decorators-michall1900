@@ -19,34 +19,46 @@ def is_prime(num: int) -> bool:
 
 class PrimeAndPow:
 
-    """
-    A PrimeAndPow class for example.
+    """A PrimeAndPow class for example.
 
-    :ivar number: An integer number.
+    :ivar prime: An integer number.
 
-    :param number: An integer number.
+    :param prime: An integer number.
     """
-    def __init__(self, number: int):
-        self.prime = number
+    def __init__(self, prime: int):
+        """Constructor method.
+        """
+        self.prime = prime
 
     def __str__(self) -> str:
+        """Returns string that tells what prime saved here.
+        """
         return f"Prime = {self.__prime}"
 
     @staticmethod
     def pow(number: float, power: float) -> float:
-        """A static method to give an example to staticmethod decorator."""
+        """Calculate number ** power. A static method for giving an example to the static method decorator.
+        :param number: Any number to calculate its power.
+        :param power: The power.
+        :return: The result of number ** power.
+        """
         # self._number ----> Couldn't do it
         return number ** power
 
     @property
     def prime(self) -> int:
-        """To show what is it property decorator."""
+        """Returns prime member. To show what is it property decorator.
+        :return: Prime member.
+        """
         print("At property decorator.")
         return self.__prime
 
     @prime.setter
     def prime(self, number: int) -> None:
-        """Setter for number to show what is it setter decorator."""
+        """Setter for number to show what is it setter decorator.
+        :param number:A number for replacing it with the current one. The current number will replace with the
+                      new one only if the new one is prime. Else, it will be set to 2.
+        """
         print("Inside setter, checking if the value is legal.")
         try:
             if not is_prime(number):
