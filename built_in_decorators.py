@@ -1,5 +1,5 @@
-from atexit import register
-from math import isqrt
+import atexit
+import math
 
 
 # Global variable file to close it in the end with @atexit.register.
@@ -7,18 +7,18 @@ FILE = open("test.txt", "a")
 
 
 def is_prime(num: int) -> bool:
-    """
-    Return answer to the question: is the number prime or not.
+    """Return answer to the question: is the number prime or not.
     :param num: An integer number to check if it is prime.
     :return: True if it prime, otherwise false.
     """
     # At first, checking if number is even and != 2 or < 2 (the first prime).
-    # If it isn't, check if there are dividers to the received number (the number should be odd or = 2).
-    return False if num < 2 or (num != 2 and num % 2 == 0) else all(num % div for div in range(3, isqrt(num) + 1, 2))
+    # If it isn't, check if there are dividers to the received number
+    # (the number should be odd or = 2).
+    return False if num < 2 or (num != 2 and num % 2 == 0) \
+        else all(num % div for div in range(3, math.isqrt(num) + 1, 2))
 
 
 class PrimeAndPow:
-
     """A PrimeAndPow class for example.
 
     :ivar prime: An integer number.
@@ -31,13 +31,15 @@ class PrimeAndPow:
         self.prime = prime
 
     def __str__(self) -> str:
-        """Returns string that tells what prime saved here.
+        """
+        :return: String that tells what prime saved here.
         """
         return f"Prime = {self.__prime}"
 
     @staticmethod
     def pow(number: float, power: float) -> float:
-        """Calculate number ** power. A static method for giving an example to the static method decorator.
+        """Calculate number ** power. A static method for giving an example to the static
+         method decorator.
         :param number: Any number to calculate its power.
         :param power: The power.
         :return: The result of number ** power.
@@ -55,9 +57,10 @@ class PrimeAndPow:
 
     @prime.setter
     def prime(self, number: int) -> None:
-        """Setter for number to show what is it setter decorator.
-        :param number:A number for replacing it with the current one. The current number will replace with the
-                      new one only if the new one is prime. Else, it will be set to 2.
+        """Setter for prime number to show what is it setter decorator.
+        :param number:An integer number to replace it with the current number.
+                      The current number will replace with the new one only if the new one is
+                      prime. Else, set the current number to 2.
         """
         print("Inside setter, checking if the value is legal.")
         try:
@@ -70,9 +73,10 @@ class PrimeAndPow:
             self.__prime = number
 
 
-@register
+@atexit.register
 def exit_message() -> None:
-    """Print that at this function, closing the global file and print file.closed after closing file."""
+    """Print that at this function, closing the global file and print file.closed
+     after closing file."""
     print("Bye bye from exit_message function. Using here @atexit.register. Closing file...")
     FILE.close()
     print("Answer of file.closed = ", FILE.closed)
@@ -85,14 +89,14 @@ def main_three_built_in_decorators() -> None:
     print("PrimeAndPow.pow(10, 2) = ", PrimeAndPow.pow(10, 2))
     print("-" * 80 + "\n")
     print("Trying to create math object with 3.7 as value.")
-    a = PrimeAndPow(3.7)
-    print(f"PrimeAndPow object str: {a}.")
+    prime_and_pow_object = PrimeAndPow(3.7)
+    print(f"PrimeAndPow object str: {prime_and_pow_object}.")
     print("-" * 80 + "\n")
     print("Trying to change PrimeAndPow object value to 6.")
-    a.prime = 6
-    print(f"PrimeAndPow object str: {a}.")
+    prime_and_pow_object.prime = 6
+    print(f"PrimeAndPow object str: {prime_and_pow_object}.")
     print("-" * 80 + "\n")
-    print(f"a.number = {a.prime}.")
+    print(f"a.number = {prime_and_pow_object.prime}.")
     print("-" * 80 + "\n")
 
 
