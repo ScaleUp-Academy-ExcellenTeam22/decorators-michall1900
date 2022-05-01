@@ -27,14 +27,16 @@ class InvalidTypeError(Exception):
 
 
 def type_check(correct_type: Type[object]) -> Callable[Callable[Any, Any], Callable[Any, Any]]:
-    """Returns a decorator that checks if the given type is like the function's argument type.
+    """
+    Returns a decorator that checks if the given type is like the function's argument type.
 
     :param correct_type: The type of the parameter that should send to function.
     :return: Decorator that will check if the type like wanted and will raise an error if it isn't.
     """
     @wraps(correct_type)
     def type_check_decorator(function: Callable[correct_type, Any]) -> Callable[correct_type, Any]:
-        """Check if a function that should receive one argument will receive the correct type
+        """
+        Check if a function that should receive one argument will receive the correct type
          of argument. If the argument type isn't as wanted, an InvalidTypeError will raise.
 
         :param function: A function that receives one argument.
@@ -42,7 +44,8 @@ def type_check(correct_type: Type[object]) -> Callable[Callable[Any, Any], Calla
         """
         @wraps(function)
         def wrapper(argument: type(correct_type)) -> Any:
-            """Checks if the receive type is as wanted. If it is, return what function return.
+            """
+            Checks if the receive type is as wanted. If it is, return what function return.
             Else, raise InvalidTypeError.
 
             :param argument: An argument for function.
@@ -58,7 +61,8 @@ def type_check(correct_type: Type[object]) -> Callable[Callable[Any, Any], Calla
 
 @type_check(float)
 def times2(number: float) -> float:
-    """Receives a number and return number * 2.
+    """
+    Receives a number and return number * 2.
 
     :param number : A number to calculate number * 2.
     :return: The result of number * 2.
